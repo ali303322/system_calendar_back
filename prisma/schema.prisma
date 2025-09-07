@@ -38,6 +38,7 @@ model Event {
   location       String?
   is_public      Boolean            @default(false)
   created_by     String
+  color          String              @default("#45B7D1")
   creator        User               @relation("UserEvents", fields: [created_by], references: [id])
   participants   EventParticipant[]
   createdAt      DateTime           @default(now())
@@ -46,7 +47,7 @@ model Event {
 
 model EventParticipant {
   id        String               @id @default(uuid())
-  event     Event                @relation(fields: [event_id], references: [id])
+  event     Event                @relation(fields: [event_id], references: [id], onDelete: Cascade)
   event_id  String
   user      User                 @relation(fields: [user_id], references: [id])
   user_id   String

@@ -16,7 +16,10 @@ fastify.register(require('@fastify/jwt'), {
 // });
 
 
-fastify.register(require('@fastify/cors'), { origin: '*' });
+fastify.register(require('@fastify/cors'), { 
+     origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+});
 
 
 // // Register Swagger core (can be early)
